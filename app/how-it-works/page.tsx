@@ -3,11 +3,11 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'How It Works | MindTheStore.ai',
-  description: 'Understand the micro-influencer income model — how YouTube channels, affiliate marketing, and AI-assisted content generation build real, lasting side-gig income.',
+  description: 'Understand the micro-influencer income model — how YouTube channels, affiliate marketing, and AI-assisted content generation build real, lasting side-gig income — and how to exit on your terms when the time comes.',
   alternates: { canonical: '/how-it-works' },
   openGraph: {
     title: 'How It Works | MindTheStore.ai',
-    description: 'The honest guide to building micro-influencer income that survives algorithm changes and actually clears taxes.',
+    description: 'The honest guide to building micro-influencer income that survives algorithm changes, clears taxes, and becomes an asset you can sell.',
     url: 'https://mindthestore.ai/how-it-works',
   },
 }
@@ -19,7 +19,7 @@ export default function HowItWorksPage() {
       <section className="hiw-hero shell">
         <p className="eyebrow">The full picture, plainly stated</p>
         <h1>How a micro-influencer<br />business actually works</h1>
-        <p className="lede">Not a funnel. Not passive income magic. A real explanation of how content channels earn money, why AI slop fails, and what the honest path to $100 a day looks like.</p>
+        <p className="lede">Not a funnel. Not passive income magic. A real explanation of how content channels earn money, why AI slop fails, what the honest path to $100 a day looks like — and what happens when you want to sell.</p>
       </section>
 
       <section className="hiw-section shell">
@@ -34,6 +34,10 @@ export default function HowItWorksPage() {
             <li><strong>Sponsored content and digital products</strong> — Once an audience trusts a channel, brands pay for placements. Courses, guides, and templates are straightforward to add and keep earning.</li>
           </ul>
           <p>These three income streams compound. A $50 YouTube payout plus $120 in affiliate commissions plus occasional sponsorships adds up faster than a single fragile stream.</p>
+          <div className="hiw-callout">
+            <strong>You are building an asset, not renting one.</strong>
+            <p>Your domain, your YouTube channel, your subscriber list, your affiliate relationships — all of it is yours. Registered in your name, transferred to your accounts on day one. If MTS ever closed tomorrow, your business keeps running. That ownership is what makes the model durable and what makes it worth something if you ever want to sell.</p>
+          </div>
         </div>
       </section>
 
@@ -127,6 +131,25 @@ export default function HowItWorksPage() {
               <span className="hiw-month">Year 2+</span>
               <p>Compounding. Channels with an established audience earn more per video. Affiliate content that ranks in search earns passively. The work shifts from building to maintaining and improving.</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="hiw-section shell hiw-alt">
+        <div className="hiw-number">06</div>
+        <div className="hiw-body">
+          <h2>The exit: selling a running business</h2>
+          <p>Most side-gig platforms give you no path out. You stop paying, the account closes, and everything disappears. MTS is structured differently because you own the asset.</p>
+          <p>A content business with a proven income history — six months of affiliate commissions, an established YouTube channel, a ranked blog — has real market value. In the content site market, businesses typically sell for 24–36 times their monthly revenue. A gig earning $300/month gross has sold for $7,000–$10,000 on established marketplaces.</p>
+          <p>Life changes. Retirement, a new job, health, a move. When you are ready to stop, your options with MTS are:</p>
+          <ul>
+            <li><strong>Cancel and keep everything</strong> — your site, your channel, your content. Walk away with the asset, manage it yourself or let it run passively.</li>
+            <li><strong>Sell through the MTS marketplace</strong> — list your running business for sale. Buyers want businesses with income history. We handle the transfer. You keep the proceeds.</li>
+            <li><strong>Pause and return</strong> — we retain your artifacts for a full year after cancellation at no charge. If circumstances change, reactivate where you left off.</li>
+          </ul>
+          <div className="hiw-callout">
+            <strong>A dignified exit is part of the design.</strong>
+            <p>Seniors and students face real life transitions. We built MTS so that stopping is not a loss — it is a choice. The business you built has value, and that value belongs to you.</p>
           </div>
         </div>
       </section>
