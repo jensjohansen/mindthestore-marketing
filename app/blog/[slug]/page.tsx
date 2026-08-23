@@ -76,7 +76,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               )}
             </div>
           </header>
-          <img src={`/images/blog/${post.slug}-hero.png`} alt={post.title} className="blog-post-hero" />
+          {post.heroImage && (
+            <img src={post.heroImage} alt={post.title} className="blog-post-hero" />
+          )}
           <div className="blog-post-content" dangerouslySetInnerHTML={{ __html: post.content }} />
           <footer className="blog-post-footer">
             <Link href="/blog" className="text-link">Read more articles <span aria-hidden="true">→</span></Link>
