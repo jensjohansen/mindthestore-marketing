@@ -18,7 +18,9 @@ export function Header() {
           <span aria-hidden="true">{open ? '×' : '☰'}</span>
         </button>
         <nav id="site-navigation" className={open ? 'nav-links is-open' : 'nav-links'} aria-label="Main navigation">
-          <Link href="/#find-your-path" onClick={() => setOpen(false)}>Find your path</Link>
+          <Link href="/#build-your-side-gig" onClick={() => setOpen(false)}>Find your path</Link>
+          <Link href="/how-it-works" onClick={() => setOpen(false)}>How it works</Link>
+          <Link href="/blog" onClick={() => setOpen(false)}>Blog</Link>
           <Link href="/pricing" onClick={() => setOpen(false)}>Pricing</Link>
           <Link className="nav-cta" href="/signup" onClick={() => setOpen(false)}>Start free <span aria-hidden="true">→</span></Link>
         </nav>

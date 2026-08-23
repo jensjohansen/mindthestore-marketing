@@ -21,6 +21,7 @@ export function EmailSignup({ source = 'MindTheStore.ai', compact = false }: Ema
 
   return (
     <form className={compact ? 'email-form compact' : 'email-form'} onSubmit={submit}>
+      <input type="hidden" name="funnel_origin" value={source} />
       <label htmlFor={`email-${source}`}>Your email address</label>
       <div className="email-controls">
         <input id={`email-${source}`} name="email" type="email" autoComplete="email" placeholder="you@example.com" required />

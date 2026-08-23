@@ -3,6 +3,7 @@ import { EmailSignup } from './EmailSignup'
 
 type FunnelHeroProps = {
   audience: string
+  funnelKey: string
   hook: string
   description: string
   concern: string
@@ -10,13 +11,12 @@ type FunnelHeroProps = {
 }
 
 const stages = [
-  ['01', 'Freemium', 'Find one idea worth trying'],
-  ['02', 'Niche', 'Choose the right audience'],
-  ['03', 'Build', 'Shape an offer that sells'],
-  ['04', 'Operate', 'Keep the work moving']
+  ['01', 'Free start', 'One niche, fully researched, delivered free'],
+  ['02', 'Single Gig', 'Your first channel live and generating content'],
+  ['03', 'Triple Gig', 'Three income streams — the path to $100/day net']
 ]
 
-export function FunnelHero({ audience, hook, description, concern, support }: FunnelHeroProps) {
+export function FunnelHero({ audience, funnelKey, hook, description, concern, support }: FunnelHeroProps) {
   return (
     <>
       <section className="funnel-hero">
@@ -25,7 +25,7 @@ export function FunnelHero({ audience, hook, description, concern, support }: Fu
             <p className="eyebrow">For {audience}</p>
             <h1>{hook}</h1>
             <p className="lede">{description}</p>
-            <EmailSignup source={audience.toLowerCase()} />
+            <EmailSignup source={funnelKey} />
           </div>
           <aside className="idea-board" aria-label="A small idea can grow into an operating business">
             <p className="idea-label">The MTS path</p>
@@ -41,7 +41,7 @@ export function FunnelHero({ audience, hook, description, concern, support }: Fu
         <div><h2>{concern}</h2><p>{support}</p></div>
       </section>
       <section className="journey-section">
-        <div className="shell"><p className="section-number">02 / Your service ladder</p><div className="journey-heading"><h2>From first thought<br />to steady rhythm.</h2><p>Choose the amount of support that matches where you are today. Every step leaves you with something useful.</p></div><ol className="journey-list">{stages.map(([number, name, detail]) => <li key={name}><span>{number}</span><h3>{name}</h3><p>{detail}</p><b aria-hidden="true">↗</b></li>)}</ol></div>
+        <div className="shell"><p className="section-number">02 / Your service ladder</p><div className="journey-heading"><h2>From first thought<br />to steady income.</h2><p>Each step builds on the last and leaves you owning something real. <Link href="/how-it-works">See how the income model works →</Link></p></div><ol className="journey-list journey-list-3">{stages.map(([number, name, detail]) => <li key={name}><span>{number}</span><h3>{name}</h3><p>{detail}</p><b aria-hidden="true">↗</b></li>)}</ol></div>
       </section>
       <section className="proof-section shell">
         <div className="proof-copy"><p className="section-number">03 / Real momentum, in real life</p><h2>Proof is personal.</h2><p>We&apos;re building a library of stories from people who made their expertise work in a new way.</p><Link href="/pricing">See the simple pricing <span aria-hidden="true">→</span></Link></div>

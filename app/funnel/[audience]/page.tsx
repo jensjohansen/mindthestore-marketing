@@ -5,6 +5,7 @@ import { FunnelHero } from '@/components/FunnelHero'
 const audiences = {
   seniors: {
     audience: 'seniors',
+    funnelKey: 'seniors',
     hook: 'Turn your life experience into AI-powered side income.',
     description: 'Your perspective has value. MindTheStore helps you turn it into a small, manageable business—at a pace that makes sense for your life.',
     concern: 'You should not have to choose between extra income and your peace of mind.',
@@ -14,6 +15,7 @@ const audiences = {
   },
   students: {
     audience: 'students',
+    funnelKey: 'students',
     hook: 'Build a monetized micro-influencer business while you study.',
     description: 'You have fresh ideas and an audience taking shape. MTS gives you a focused way to build something real without making school take a back seat.',
     concern: 'Ambition should not require an all-or-nothing gamble.',
@@ -23,6 +25,7 @@ const audiences = {
   },
   underemployed: {
     audience: 'underemployed adults',
+    funnelKey: 'underemployed',
     hook: 'AI gives you the staff to run a business you could not run alone.',
     description: 'Your skills deserve better than being undervalued. MTS helps you package what you know into a business built around your capacity and goals.',
     concern: 'Being underpaid does not mean you are underqualified.',

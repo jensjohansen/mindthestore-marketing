@@ -3,15 +3,28 @@ import { PricingTable } from '@/components/PricingTable'
 
 export const metadata: Metadata = {
   title: 'Pricing | MindTheStore.ai',
-  description: 'Start free with one niche idea. Add niches for $20-$50, build a gig for $100, or let AI operate your business for $99/month.',
+  description: 'Start free with one niche idea. Launch your first gig for $97/month. Go for the $100/day income goal with three gigs for $197/month.',
   alternates: { canonical: '/pricing' },
   openGraph: {
     title: 'Pricing | MindTheStore.ai',
-    description: 'Start free with one niche idea. Add niches, build a gig, or let AI operate your business.',
+    description: 'Start free, then $97/month for one gig or $197/month for three. You keep the site if you cancel.',
     url: 'https://mindthestore.ai/pricing',
   },
 }
 
 export default function PricingPage() {
-  return <section className="pricing-page"><div className="shell"><p className="eyebrow">Pricing built for a sensible start</p><h1>Support that grows<br />only when <em>you</em> do.</h1><p className="lede pricing-lede">Start with one clear idea at no cost. Move forward only when the next layer of support is useful.</p><PricingTable /><div className="pricing-note"><span aria-hidden="true">✦</span><p><strong>No surprise charges.</strong> Freemium is an email-only entry point. You will always know what your next step costs before you take it.</p></div></div></section>
+  return (
+    <section className="pricing-page">
+      <div className="shell">
+        <p className="eyebrow">Three tiers. No surprise charges.</p>
+        <h1>Start free.<br />Grow only when <em>you</em> do.</h1>
+        <p className="lede pricing-lede">The free niche report shows you the opportunity. The monthly plans build and operate the business. Cancel any time — you keep everything we built.</p>
+        <PricingTable />
+        <div className="pricing-note">
+          <span aria-hidden="true">✦</span>
+          <p><strong>The tax reality, stated plainly.</strong> Side income gets taxed — federal, self-employment, and state. To keep $100/day, most people need to earn $200–$280/day gross. Triple Gig is priced and structured to reach that target with three separate income streams, not one fragile one. <a href="/how-it-works">See how the math works →</a></p>
+        </div>
+      </div>
+    </section>
+  )
 }

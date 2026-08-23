@@ -14,5 +14,5 @@ export const metadata: Metadata = {
 }
 
 export default function SignupPage() {
-  return <section className="signup-page"><div className="signup-backdrop" aria-hidden="true" /><div className="signup-card"><p className="eyebrow">Freemium entry</p><h1>One small idea<br />can be enough.</h1><p>Tell us where to send your free, focused starting point. No credit card. No long form. Just an email.</p><EmailSignup source="signup" /><div className="signup-divider" /><p className="signup-alt">Already know you need more support? <Link href="/pricing">View pricing</Link></p></div></section>
+  return <section className="signup-page"><div className="signup-backdrop" aria-hidden="true" /><div className="signup-card"><p className="eyebrow">Freemium entry</p><h1>One small idea<br />can be enough.</h1><p>Tell us where to send your free, focused starting point. No credit card. No long form. Just an email.</p><EmailSignup source="direct" /><div className="signup-divider" /><p className="signup-alt">Already know you need more support? <Link href="/pricing">View pricing</Link></p></div></section>
 }
