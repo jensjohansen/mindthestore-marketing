@@ -24,6 +24,18 @@ export const metadata: Metadata = {
     description: 'Practical AI guidance for building a small business that fits your life.',
   },
   robots: { index: true, follow: true },
+  manifest: '/manifest.json',
+  themeColor: '#092a3a',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'MindTheStore',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
 }
 
 const jsonLd = {
