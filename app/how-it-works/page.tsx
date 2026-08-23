@@ -50,9 +50,10 @@ export default function HowItWorksPage() {
           <p>YouTube, Google, and every major social platform has one goal: keep people on the platform. AI-generated content that sounds authoritative but says nothing original drives viewers away. The algorithms are tuned to detect and deprioritize it. When they act, a channel that took months to build disappears from recommendations overnight.</p>
           <p>The businesses selling &ldquo;AI content at scale&rdquo; have a 2% success rate. The 98% lose their channels and their investment.</p>
           <div className="hiw-callout">
-            <strong>The MTS difference: the human approval gate.</strong>
-            <p>Every piece of content MTS generates goes through a human review step before it touches a live channel. You see it. You approve it or you send it back. Nothing goes live without your say-so.</p>
-            <p>This is not a formality. It is the structural protection that keeps your channel alive. An AI that generates content for a human who reviews it is creating assisted human content. That is what the platforms reward. That is what builds an audience that stays.</p>
+            <strong>The MTS difference: quality before the review, not just at the review.</strong>
+            <p>Our AI agents are trained — not just prompted — to produce content that meets a specific editorial standard before it reaches you. That means researched claims, a consistent voice, proper structure, and genuine usefulness to the audience. The review step exists to catch the edge cases and apply your personal judgment, not to fix bad drafts.</p>
+            <p>Every piece of content you see has already passed an internal quality gate. You are reviewing polished work, not sorting through AI noise. Nothing goes live without your approval — and very little should need to be sent back.</p>
+            <p>This is the structural protection that keeps your channel alive. An AI that produces quality content for a human who reviews it is creating assisted human content. That is what the platforms reward. That is what builds an audience that stays.</p>
           </div>
         </div>
       </section>
@@ -68,11 +69,12 @@ export default function HowItWorksPage() {
             <li><strong>Self-employment tax</strong> — 15.3% on net profit (Social Security and Medicare that an employer would otherwise split with you)</li>
             <li><strong>State income tax</strong> — varies, but often 5–10%</li>
           </ul>
-          <p>A back-of-envelope estimate: on a modest side income, the combined rate runs 35–50%. To keep $100 a day, you need to earn $150–200 a day gross.</p>
+          <p>A back-of-envelope estimate: on a modest side income, the combined rate runs 35–50%. To keep $100 a day, you need to earn $150–200 a day gross. And that estimate assumes modest income. The numbers get sharper as your gigs succeed.</p>
+          <p>Here is the part most side-gig guides skip: a well-chosen niche in a monetizable category — personal finance, health and wellness, home improvement, outdoor recreation — can generate $200–$400 a day in gross affiliate and ad revenue within the first year. That sounds like a success. And it is. But at that level, your combined federal, self-employment, and state tax rate can hit 50–60%. Three gigs each earning $300/day gross puts you firmly into the highest federal brackets. Gross income of $900/day does not net you $900/day.</p>
           <div className="hiw-callout">
-            <strong>Why we recommend three gigs, not one.</strong>
-            <p>One niche earning $50/day in affiliate commissions is fragile and the net might be $25–30 after taxes. Three niches each earning $50–75/day gets you to gross income that nets $100 after taxes — and the risk is spread across three independent channels. If one platform adjusts its algorithm, two businesses keep running.</p>
-            <p>We are not tax lawyers. We strongly recommend consulting a CPA once income becomes meaningful. What we <em>can</em> do is help you structure your business so there is income worth having a conversation about.</p>
+            <strong>Why niche selection and the three-gig model are both part of the answer.</strong>
+            <p>We deliberately pick niches with strong monetization potential — that is what makes the income meaningful. But we also structure customers on three gigs from the start, because three separate income streams spread the tax exposure and reduce platform risk at the same time. You are not building one fragile $300/day business. You are building three resilient $100/day businesses that together reach the same gross target with a far more manageable risk profile.</p>
+            <p>We are not tax lawyers. Once your income becomes meaningful, please consult a CPA — especially about structuring as an LLC or S-corp, which can significantly reduce self-employment tax at higher income levels. What we <em>can</em> do is help you build income that makes that conversation worth having.</p>
           </div>
         </div>
       </section>
