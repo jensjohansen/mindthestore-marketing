@@ -9,10 +9,18 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: 'invalid_body' }, { status: 400 })
   }
 
-  const { email, funnel_origin } = (body ?? {}) as { email?: unknown; funnel_origin?: unknown }
+  const { email, funnel_origin, optIn } = (body ?? {}) as {
+    email?: unknown
+    funnel_origin?: unknown
+    optIn?: unknown
+  }
 
   if (!isValidEmail(email)) {
     return NextResponse.json({ ok: false, error: 'invalid_email' }, { status: 400 })
+  }
+
+  if (optIn !== true) {
+    return NextResponse.json({ ok: false, error: 'opt_in_required' }, { status: 400 })
   }
 
   const source = typeof funnel_origin === 'string' && funnel_origin.length > 0 ? funnel_origin : 'direct'

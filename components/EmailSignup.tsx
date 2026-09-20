@@ -1,6 +1,7 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
+import Link from 'next/link'
 
 type EmailSignupProps = {
   source?: string
@@ -16,26 +17,30 @@ export function EmailSignup({ source = 'direct', compact = false }: EmailSignupP
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const form = event.currentTarget
-    const email = (new FormData(form).get('email') as string) || ''
+    const data = new FormData(form)
+    const email = (data.get('email') as string) || ''
+    const optIn = data.get('optIn') === 'on'
 
     setStatus('loading')
     try {
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, funnel_origin: source }),
+        body: JSON.stringify({ email, funnel_origin: source, optIn }),
       })
-      const data = await res.json().catch(() => ({}))
+      const result = await res.json().catch(() => ({}))
 
-      if (res.ok && data.ok) {
+      if (res.ok && result.ok) {
         setStatus('success')
         return
       }
 
-      if (data.error === 'not_configured') {
+      if (result.error === 'not_configured') {
         setErrorMessage("Sign-ups aren't live yet — check back shortly.")
-      } else if (data.error === 'invalid_email') {
+      } else if (result.error === 'invalid_email') {
         setErrorMessage('That email address looks off — please double-check it.')
+      } else if (result.error === 'opt_in_required') {
+        setErrorMessage('Please check the box to confirm you want to hear from us.')
       } else {
         setErrorMessage('Something went wrong on our end. Please try again in a minute.')
       }
@@ -59,6 +64,11 @@ export function EmailSignup({ source = 'direct', compact = false }: EmailSignupP
           {status === 'loading' ? 'Sending…' : 'Start free'} <span aria-hidden="true">→</span>
         </button>
       </div>
+      <label className="niche-optin">
+        <input type="checkbox" name="optIn" required disabled={status === 'loading'} />
+        I&rsquo;d like to receive my free niche idea and occasional emails from MindTheStore.ai. I can unsubscribe
+        anytime. See our <Link href="/terms">Terms</Link> and <Link href="/privacy">Privacy Policy</Link>.
+      </label>
       {status === 'error' && <p className="form-error" role="alert">{errorMessage}</p>}
       <p className="form-note">One practical idea by email. No payment details required.</p>
     </form>

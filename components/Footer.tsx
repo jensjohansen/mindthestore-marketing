@@ -9,7 +9,7 @@ export function Footer() {
           <p>Small ideas deserve steady support.</p>
         </div>
         <div className="footer-details">
-          <div><Link href="/how-it-works">How it works</Link><Link href="/blog">Blog</Link><Link href="/pricing">Pricing</Link><a href="mailto:hello@mindthestore.ai">Contact</a></div>
+          <div><Link href="/how-it-works">How it works</Link><Link href="/blog">Blog</Link><Link href="/pricing">Pricing</Link><Link href="/terms">Terms</Link><Link href="/privacy">Privacy</Link><a href="mailto:ops@mindthestore.ai">Contact</a></div>
         </div>
       </div>
     </footer>

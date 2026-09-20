@@ -1,6 +1,7 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
+import Link from 'next/link'
 
 type Status = 'idle' | 'loading' | 'success-queued' | 'success-manual' | 'error'
 
@@ -102,7 +103,8 @@ export function NicheQuestionnaireForm({ prefillEmail, funnelOrigin }: { prefill
 
       <label className="niche-optin">
         <input type="checkbox" name="optIn" required disabled={status === 'loading'} />
-        I&rsquo;d like to receive my free niche report and occasional emails from MindTheStore.ai. I can unsubscribe anytime.
+        I&rsquo;d like to receive my free niche report and occasional emails from MindTheStore.ai. I can unsubscribe
+        anytime. See our <Link href="/terms">Terms</Link> and <Link href="/privacy">Privacy Policy</Link>.
       </label>
 
       <button type="submit" disabled={status === 'loading'}>

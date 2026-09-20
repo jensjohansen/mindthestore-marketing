@@ -125,7 +125,8 @@ export function BusinessIntakeForm({ prefillEmail, vercelChoice, token }: Busine
 
       <label className="niche-optin">
         <input type="checkbox" name="optIn" required disabled={status === 'loading'} />
-        I&rsquo;d like MTS to start promoting my business and to receive occasional emails from MindTheStore.ai. I can unsubscribe anytime.
+        I&rsquo;d like MTS to start promoting my business and to receive occasional emails from MindTheStore.ai. I can
+        unsubscribe anytime. See our <Link href="/terms">Terms</Link> and <Link href="/privacy">Privacy Policy</Link>.
       </label>
 
       <button type="submit" disabled={status === 'loading'}>

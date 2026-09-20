@@ -63,6 +63,12 @@ h1, h2, h3, p { margin-top: 0; } h1, h2, h3 { letter-spacing: -.05em; line-heigh
 .niche-intro h1 { margin: 18px 0 24px; font-size: clamp(2.4rem, 4.4vw, 3.6rem); }
 .niche-intro .lede { color: var(--muted); max-width: 520px; }
 .niche-card { background: white; border: 1px solid var(--line); border-radius: 10px; padding: 32px; }
+.legal-page { min-height: calc(100vh - 84px); padding: 80px 0 100px; background: var(--cream); }
+.legal-shell { max-width: 760px; }
+.legal-shell h1 { margin: 18px 0 28px; font-size: clamp(2.4rem, 4.4vw, 3.6rem); }
+.legal-shell h2 { font-size: 1.35rem; margin: 36px 0 12px; }
+.legal-shell p { color: var(--muted); line-height: 1.6; }
+.legal-shell a { color: var(--teal); font-weight: 700; }
 .niche-form { display: flex; flex-direction: column; gap: 6px; }
 .niche-form label { font-weight: 750; font-size: .85rem; margin-top: 16px; color: var(--ink); }
 .niche-form label:first-child { margin-top: 0; }
