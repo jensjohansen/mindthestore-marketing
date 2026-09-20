@@ -38,6 +38,7 @@ export function BusinessIntakeForm({ prefillEmail, vercelChoice, token }: Busine
           vision: data.get('vision'),
           existingSiteUrl: data.get('existingSiteUrl'),
           vercelChoice,
+          vercelAccessToken: data.get('vercelAccessToken'),
           funnelOrigin: 'business-promotion',
         }),
       })
@@ -58,6 +59,8 @@ export function BusinessIntakeForm({ prefillEmail, vercelChoice, token }: Busine
         setErrorMessage('That email address looks off — please double-check it.')
       } else if (result.error === 'missing_fields') {
         setErrorMessage('Please fill in your business name, mission, and vision so we know what we\u2019re promoting.')
+      } else if (result.error === 'missing_vercel_access_token') {
+        setErrorMessage('Please paste the Vercel Access Token you created, or go back and choose "Build a new site on Vercel" instead.')
       } else {
         setErrorMessage('Something went wrong on our end. Please try again in a minute.')
       }
@@ -105,6 +108,20 @@ export function BusinessIntakeForm({ prefillEmail, vercelChoice, token }: Busine
         Vercel plan: <strong>{VERCEL_CHOICE_LABEL[vercelChoice]}</strong>.{' '}
         <Link href={`/business-promotion/vercel?token=${encodeURIComponent(token)}`}>Change →</Link>
       </div>
+
+      {vercelChoice === 'token' && (
+        <>
+          <label htmlFor="biz-intake-vercel-token">Vercel Access Token</label>
+          <input
+            id="biz-intake-vercel-token"
+            name="vercelAccessToken"
+            type="text"
+            placeholder="Paste the token you created in Vercel"
+            required
+            disabled={status === 'loading'}
+          />
+        </>
+      )}
 
       <label className="niche-optin">
         <input type="checkbox" name="optIn" required disabled={status === 'loading'} />
