@@ -1,25 +1,21 @@
 'use client'
 
 import { FormEvent, useState } from 'react'
-import { useRouter } from 'next/navigation'
 
-type Status = 'idle' | 'loading' | 'error'
+type Status = 'idle' | 'loading' | 'success' | 'error'
 
 /**
  * Email capture for the Business Promotion track (PRD §3.4.1, Track B).
  * Reuses the existing /api/subscribe endpoint (Resend Audience + confirmation
- * email), but — unlike the Free Niche flow, which relies on the confirmation
- * email to carry the customer to the next step — this always advances the
- * customer to the Vercel setup step immediately, since RESEND_API_KEY isn't
- * provisioned yet and the confirmation email may not actually send. See
- * docs/mindthestore/mindthestore-onboarding-checklist.md, Track B, cross-cutting
- * prerequisites.
+ * email). The confirmation email carries an opaque verification token
+ * (lib/verificationToken.ts) linking to /business-promotion/vercel, so the
+ * customer's email address is never exposed in a clickable link. The
+ * customer must open that email to continue — this component does not
+ * advance them automatically.
  */
 export function BusinessEmailSignup() {
-  const router = useRouter()
   const [status, setStatus] = useState<Status>('idle')
   const [errorMessage, setErrorMessage] = useState('')
-  const [note, setNote] = useState('')
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -35,25 +31,31 @@ export function BusinessEmailSignup() {
       })
       const data = await res.json().catch(() => ({}))
 
-      if (data.error === 'invalid_email') {
-        setErrorMessage('That email address looks off — please double-check it.')
-        setStatus('error')
+      if (res.ok && data.ok) {
+        setStatus('success')
         return
       }
 
-      if (!(res.ok && data.ok)) {
-        setNote(
-          data.error === 'not_configured'
-            ? "Heads up: confirmation emails aren't live yet, so you won't get one — but you can keep going right now."
-            : 'We could not send a confirmation email right now, but you can keep going.'
-        )
+      if (data.error === 'invalid_email') {
+        setErrorMessage('That email address looks off — please double-check it.')
+      } else if (data.error === 'not_configured') {
+        setErrorMessage("Sign-ups aren't live yet — check back shortly.")
+      } else {
+        setErrorMessage('Something went wrong on our end. Please try again in a minute.')
       }
-
-      router.push(`/business-promotion/vercel?email=${encodeURIComponent(email)}`)
+      setStatus('error')
     } catch {
       setErrorMessage('Something went wrong on our end. Please try again in a minute.')
       setStatus('error')
     }
+  }
+
+  if (status === 'success') {
+    return (
+      <p className="form-success" role="status">
+        Check your inbox — we&rsquo;ve sent a link to continue setting up your business.
+      </p>
+    )
   }
 
   return (
@@ -66,8 +68,7 @@ export function BusinessEmailSignup() {
         </button>
       </div>
       {status === 'error' && <p className="form-error" role="alert">{errorMessage}</p>}
-      {note && <p className="form-note" role="status">{note}</p>}
-      <p className="form-note">We&rsquo;ll use this to send you next-step instructions.</p>
+      <p className="form-note">We&rsquo;ll email you a link to continue.</p>
     </form>
   )
 }

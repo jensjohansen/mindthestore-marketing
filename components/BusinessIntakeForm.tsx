@@ -8,6 +8,7 @@ type Status = 'idle' | 'loading' | 'success-queued' | 'success-manual' | 'error'
 type BusinessIntakeFormProps = {
   prefillEmail: string
   vercelChoice: 'new' | 'token'
+  token: string
 }
 
 const VERCEL_CHOICE_LABEL: Record<'new' | 'token', string> = {
@@ -15,7 +16,7 @@ const VERCEL_CHOICE_LABEL: Record<'new' | 'token', string> = {
   token: 'Keep my existing site (scoped Vercel token)',
 }
 
-export function BusinessIntakeForm({ prefillEmail, vercelChoice }: BusinessIntakeFormProps) {
+export function BusinessIntakeForm({ prefillEmail, vercelChoice, token }: BusinessIntakeFormProps) {
   const [status, setStatus] = useState<Status>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
@@ -102,7 +103,7 @@ export function BusinessIntakeForm({ prefillEmail, vercelChoice }: BusinessIntak
 
       <div className="setup-status setup-status-ok" style={{ marginBottom: '18px' }}>
         Vercel plan: <strong>{VERCEL_CHOICE_LABEL[vercelChoice]}</strong>.{' '}
-        <Link href={`/business-promotion/vercel?email=${encodeURIComponent(prefillEmail)}`}>Change →</Link>
+        <Link href={`/business-promotion/vercel?token=${encodeURIComponent(token)}`}>Change →</Link>
       </div>
 
       <label className="niche-optin">

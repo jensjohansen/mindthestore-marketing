@@ -17,10 +17,10 @@ const TAB_INACTIVE = 'border-[var(--line)] bg-white text-[var(--ink)] hover:bord
  * needs to choose: build a fresh site on Vercel, or keep the existing site
  * and hand MTS a scoped access token to manage a domain/deployment instead.
  */
-export function VercelChoiceToggle({ email }: { email: string }) {
+export function VercelChoiceToggle({ token }: { token: string }) {
   const [choice, setChoice] = useState<Choice>('new')
 
-  const continueHref = `/business-promotion/intake?email=${encodeURIComponent(email)}&vercelChoice=${choice}`
+  const continueHref = `/business-promotion/intake?token=${encodeURIComponent(token)}&vercelChoice=${choice}`
 
   return (
     <div className="setup-action-block">

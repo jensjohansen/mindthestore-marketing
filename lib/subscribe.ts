@@ -1,3 +1,5 @@
+import { createVerificationToken } from './verificationToken'
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export function isValidEmail(email: unknown): email is string {
@@ -41,6 +43,25 @@ export async function addSubscriber(email: string, source: string): Promise<void
 
   const fromAddress = process.env.RESEND_FROM_ADDRESS || 'MindTheStore.ai <hello@mindthestore.ai>'
 
+  let continueUrl: string
+  let subject: string
+  if (source === 'business-promotion') {
+    let token: string
+    try {
+      token = await createVerificationToken(email, source)
+    } catch (err) {
+      throw new SubscribeProviderError(
+        `Could not create a verification token: ${err instanceof Error ? err.message : 'unknown'}`
+      )
+    }
+    continueUrl = `https://mindthestore.ai/business-promotion/vercel?token=${encodeURIComponent(token)}`
+    subject = 'Confirm your MindTheStore.ai business setup'
+  } else {
+    continueUrl =
+      'https://mindthestore.ai/free-niche?email=' + encodeURIComponent(email) + '&source=' + encodeURIComponent(source)
+    subject = 'Your free niche starting point'
+  }
+
   const sendRes = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
@@ -50,12 +71,10 @@ export async function addSubscriber(email: string, source: string): Promise<void
     body: JSON.stringify({
       from: fromAddress,
       to: email,
-      subject: 'Your free niche starting point',
+      subject,
       text:
         "Thanks for signing up.\n\n" +
-        "Next step: tell us a bit about yourself so we can research one focused, " +
-        "practical niche for you: https://mindthestore.ai/free-niche?email=" + encodeURIComponent(email) +
-        "&source=" + encodeURIComponent(source) + "\n\n" +
+        "Next step: " + continueUrl + "\n\n" +
         "No payment required for this step.\n\n" +
         "— MindTheStore.ai\n\n" +
         "If you didn't request this, you can ignore this email or reply to unsubscribe.",

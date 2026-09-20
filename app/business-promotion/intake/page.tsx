@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { BusinessIntakeForm } from '@/components/BusinessIntakeForm'
+import { resolveVerificationToken } from '@/lib/verificationToken'
 
 export const metadata: Metadata = {
   title: 'Business Intake | MindTheStore.ai Business Promotion',
@@ -7,13 +9,29 @@ export const metadata: Metadata = {
   alternates: { canonical: '/business-promotion/intake' },
 }
 
-export default function BusinessPromotionIntakePage({
+export default async function BusinessPromotionIntakePage({
   searchParams,
 }: {
-  searchParams: { email?: string; vercelChoice?: string }
+  searchParams: { token?: string; vercelChoice?: string }
 }) {
-  const prefillEmail = typeof searchParams.email === 'string' ? searchParams.email : ''
+  const token = typeof searchParams.token === 'string' ? searchParams.token : ''
+  const resolved = token ? await resolveVerificationToken(token) : null
   const vercelChoice = searchParams.vercelChoice === 'token' ? 'token' : 'new'
+
+  if (!resolved) {
+    return (
+      <main className="niche-page">
+        <div className="shell niche-grid">
+          <div className="niche-intro">
+            <p className="eyebrow">Business Promotion setup</p>
+            <h1>This link has expired</h1>
+            <p className="lede">Please sign up again to get a fresh confirmation link.</p>
+            <Link href="/business-promotion" className="btn-primary-link">Back to Business Promotion →</Link>
+          </div>
+        </div>
+      </main>
+    )
+  }
 
   return (
     <main className="niche-page">
@@ -27,7 +45,7 @@ export default function BusinessPromotionIntakePage({
           </p>
         </div>
         <div className="niche-card">
-          <BusinessIntakeForm prefillEmail={prefillEmail} vercelChoice={vercelChoice} />
+          <BusinessIntakeForm prefillEmail={resolved.email} vercelChoice={vercelChoice} token={token} />
         </div>
       </div>
     </main>
