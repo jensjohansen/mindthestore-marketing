@@ -27,6 +27,7 @@ export type BusinessIntakeRequest = {
   existingSiteUrl: string
   vercelChoice: VercelChoice
   vercelAccessToken: string
+  couponCode: string
   funnelOrigin: string
 }
 
@@ -70,6 +71,8 @@ export function parseBusinessIntake(body: unknown): BusinessIntakeRequest {
     throw new BusinessIntakeValidationError('missing_vercel_access_token')
   }
 
+  const couponCode = typeof b.couponCode === 'string' ? b.couponCode.trim() : ''
+
   const funnelOrigin =
     typeof b.funnelOrigin === 'string' && b.funnelOrigin.length > 0 ? b.funnelOrigin : 'business-promotion'
 
@@ -82,6 +85,7 @@ export function parseBusinessIntake(body: unknown): BusinessIntakeRequest {
     existingSiteUrl,
     vercelChoice: vercelChoice as VercelChoice,
     vercelAccessToken,
+    couponCode,
     funnelOrigin,
   }
 }
@@ -102,8 +106,8 @@ export async function enqueueBusinessIntake(request: BusinessIntakeRequest): Pro
   try {
     const rows = await query<{ id: number }>(
       `INSERT INTO business_intake_requests
-         (email, business_name, mission, vision, existing_site_url, vercel_choice, vercel_access_token, funnel_origin)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+         (email, business_name, mission, vision, existing_site_url, vercel_choice, vercel_access_token, coupon_code, funnel_origin)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
        RETURNING id`,
       [
         request.email,
@@ -113,6 +117,7 @@ export async function enqueueBusinessIntake(request: BusinessIntakeRequest): Pro
         request.existingSiteUrl || null,
         request.vercelChoice,
         request.vercelAccessToken || null,
+        request.couponCode || null,
         request.funnelOrigin,
       ]
     )

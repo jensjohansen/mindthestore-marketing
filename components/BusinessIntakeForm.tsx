@@ -39,12 +39,17 @@ export function BusinessIntakeForm({ prefillEmail, vercelChoice, token }: Busine
           existingSiteUrl: data.get('existingSiteUrl'),
           vercelChoice,
           vercelAccessToken: data.get('vercelAccessToken'),
+          couponCode: data.get('couponCode'),
           funnelOrigin: 'business-promotion',
         }),
       })
       const result = await res.json().catch(() => ({}))
 
-      if (res.ok && result.ok && result.mode === 'queued') {
+      if (res.ok && result.ok && result.checkoutUrl) {
+        window.location.href = result.checkoutUrl
+        return
+      }
+      if (res.ok && result.ok && (result.mode === 'queued' || result.mode === 'manual_billing')) {
         setStatus('success-queued')
         return
       }
@@ -122,6 +127,15 @@ export function BusinessIntakeForm({ prefillEmail, vercelChoice, token }: Busine
           />
         </>
       )}
+
+      <label htmlFor="biz-intake-coupon">Coupon code (optional)</label>
+      <input
+        id="biz-intake-coupon"
+        name="couponCode"
+        type="text"
+        placeholder="Leave blank unless you have one"
+        disabled={status === 'loading'}
+      />
 
       <label className="niche-optin">
         <input type="checkbox" name="optIn" required disabled={status === 'loading'} />
