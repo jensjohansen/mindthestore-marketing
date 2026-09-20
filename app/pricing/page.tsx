@@ -24,6 +24,10 @@ export default function PricingPage() {
           <span aria-hidden="true">✦</span>
           <p><strong>The tax reality, stated plainly.</strong> Side income gets taxed — federal, self-employment, and state. To keep $100/day, most people need to earn $200–$280/day gross. Triple Gig is priced and structured to reach that target with three separate income streams, not one fragile one. <a href="/how-it-works">See how the math works →</a></p>
         </div>
+        <div className="pricing-note">
+          <span aria-hidden="true">✦</span>
+          <p><strong>What happens after you sign up.</strong> Before we build, you&rsquo;ll set up a short list of accounts — domain, email, YouTube, socials. <a href="/onboarding/accounts">See the account setup checklist →</a></p>
+        </div>
       </div>
     </section>
   )
