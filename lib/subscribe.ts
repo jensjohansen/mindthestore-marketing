@@ -41,7 +41,7 @@ export async function addSubscriber(email: string, source: string): Promise<void
     throw new SubscribeProviderError(`Resend contact create failed (${contactRes.status}): ${body}`)
   }
 
-  const fromAddress = process.env.RESEND_FROM_ADDRESS || 'MindTheStore.ai <hello@mindthestore.ai>'
+  const fromAddress = process.env.RESEND_FROM_ADDRESS || 'MindTheStore.ai <ops@mindthestore.ai>'
 
   let continueUrl: string
   let subject: string
